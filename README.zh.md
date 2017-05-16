@@ -1,5 +1,5 @@
 <p align="center">
-<img src="http://7xqbzq.com1.z0.glb.clouddn.com/log.png" alt="ZFPlayer" title="ZFPlayer" width="557"/>
+<img src="https://github.com/renzifeng/ZFPlayer/raw/master/log.png" alt="ZFPlayer" title="ZFPlayer" width="557"/>
 </p>
 
 <p align="center">
@@ -38,6 +38,7 @@
 ## 组件
 
 - 断点下载: [ZFDownload](https://github.com/renzifeng/ZFDownload)
+- 导航: [ZFNavigationController](https://github.com/renzifeng/ZFNavigationController)（滑动返回页面时候视频播放不卡顿）
 - 布局: Masonry
 
 
@@ -310,7 +311,10 @@ self.playerView.playerModel = playerModel;
 - 邮箱: zifeng1300@gmail.com
 - QQ：459643690
 - QQ群：213376937（已满） 213375947（添加这个）
-- 最近有换工作的意向，坐标北京，有合适的位置可以联系我！
+
+# 广告时间
+
+有不错的iOS职位可以联系我，坐标北京，谢谢！！
 
 # License
 

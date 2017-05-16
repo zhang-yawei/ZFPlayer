@@ -1,5 +1,5 @@
 //
-//  ZFDownloadedCell.m
+//  UINavigationController+ZFFullscreenPopGesture.h
 //
 // Copyright (c) 2016年 任子丰 ( http://github.com/renzifeng )
 //
@@ -21,26 +21,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "ZFDownloadedCell.h"
+#import <UIKit/UIKit.h>
 
-@implementation ZFDownloadedCell
+@interface UIViewController (ZFFullscreenPopGesture)
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-- (void)setFileInfo:(ZFFileModel *)fileInfo {
-    _fileInfo = fileInfo;
-    NSString *totalSize = [ZFCommonHelper getFileSizeString:fileInfo.fileSize];
-    self.fileNameLabel.text = fileInfo.fileName;
-    self.sizeLabel.text = totalSize;
-}
+/// 隐藏NavigationBar（默认NO）
+@property (nonatomic, assign) BOOL zf_prefersNavigationBarHidden;
+/// 关闭某个控制器的pop手势（默认NO）
+@property (nonatomic, assign) BOOL zf_interactivePopDisabled;
+/// 自定义的滑动返回手势是否与其他手势共存，一般使用默认值(默认返回NO：不与任何手势共存)
+@property (nonatomic, assign) BOOL zf_recognizeSimultaneouslyEnable;
 
 @end
+
+typedef NS_ENUM(NSInteger,ZFFullscreenPopGestureStyle) {
+    ZFFullscreenPopGestureGradientStyle,   // 根据滑动偏移量背景颜色渐变
+    ZFFullscreenPopGestureShadowStyle      // 侧边阴影效果，类似系统的滑动样式
+};
+
+@interface UINavigationController (ZFFullscreenPopGesture)<UIGestureRecognizerDelegate>
+/** 默认ZFFullscreenPopGestureGradientStyle */
+@property (nonatomic, assign) ZFFullscreenPopGestureStyle popGestureStyle;
+
+@end
+

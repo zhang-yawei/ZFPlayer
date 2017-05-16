@@ -1,5 +1,5 @@
 //
-//  ZFDownloadedCell.m
+//  UIAlertController+ZFPlayerRotation.m
 //
 // Copyright (c) 2016年 任子丰 ( http://github.com/renzifeng )
 //
@@ -21,26 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "ZFDownloadedCell.h"
+#import "UIAlertController+ZFPlayerRotation.h"
 
-@implementation ZFDownloadedCell
+@implementation UIAlertController (ZFPlayerRotation)
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
+- (NSUInteger)supportedInterfaceOrientations; {
+    return UIInterfaceOrientationMaskAll;
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+#else
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
 }
-
-- (void)setFileInfo:(ZFFileModel *)fileInfo {
-    _fileInfo = fileInfo;
-    NSString *totalSize = [ZFCommonHelper getFileSizeString:fileInfo.fileSize];
-    self.fileNameLabel.text = fileInfo.fileName;
-    self.sizeLabel.text = totalSize;
-}
+#endif
 
 @end

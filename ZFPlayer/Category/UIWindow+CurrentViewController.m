@@ -1,5 +1,6 @@
 //
-//  ZFDownloadedCell.m
+//  UIWindow+CurrentViewController.m
+//  Player
 //
 // Copyright (c) 2016年 任子丰 ( http://github.com/renzifeng )
 //
@@ -21,26 +22,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "ZFDownloadedCell.h"
+#import "UIWindow+CurrentViewController.h"
 
-@implementation ZFDownloadedCell
+@implementation UIWindow (CurrentViewController)
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-- (void)setFileInfo:(ZFFileModel *)fileInfo {
-    _fileInfo = fileInfo;
-    NSString *totalSize = [ZFCommonHelper getFileSizeString:fileInfo.fileSize];
-    self.fileNameLabel.text = fileInfo.fileName;
-    self.sizeLabel.text = totalSize;
+- (UIViewController*)zf_currentViewController; {
+    UIViewController *topViewController = [self rootViewController];
+    while (true) {
+        if (topViewController.presentedViewController) {
+            topViewController = topViewController.presentedViewController;
+        } else if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)topViewController topViewController]) {
+            topViewController = [(UINavigationController *)topViewController topViewController];
+        } else if ([topViewController isKindOfClass:[UITabBarController class]]) {
+            UITabBarController *tab = (UITabBarController *)topViewController;
+            topViewController = tab.selectedViewController;
+        } else {
+            break;
+        }
+    }
+    return topViewController;
 }
 
 @end

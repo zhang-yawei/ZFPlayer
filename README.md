@@ -1,5 +1,5 @@
 <p align="center">
-<img src="http://7xqbzq.com1.z0.glb.clouddn.com/log.png" alt="ZFPlayer" title="ZFPlayer" width="557"/>
+<img src="https://github.com/renzifeng/ZFPlayer/raw/master/log.png" alt="ZFPlayer" title="ZFPlayer" width="557"/>
 </p>
 
 <p align="center">
@@ -39,6 +39,7 @@ What App using ZFPlayer, and on AppStore, please tell me, help me to statistics.
 ## Component
 
 - Breakpoint Download: [ZFDownload](https://github.com/renzifeng/ZFDownload)
+- ZFNavigationController: [ZFNavigationController](https://github.com/renzifeng/ZFNavigationController)
 - Layout: Masonry
 
 ## Installation
@@ -305,7 +306,6 @@ See the [BMPlayer](https://github.com/BrikerMan/BMPlayer) please, thanks the BMP
 - Email:  zifeng1300@gmail.com
 - QQ：459643690
 - QQ Group: 213376937（full） 213375947（add this）
-- 最近有换工作的意向，坐标北京，有合适的位置可以联系我！
 
 # License
 

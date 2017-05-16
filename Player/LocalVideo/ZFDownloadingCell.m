@@ -44,8 +44,7 @@
  *
  *  @param sender UIButton
  */
-- (IBAction)clickDownload:(UIButton *)sender
-{
+- (IBAction)clickDownload:(UIButton *)sender {
     // 执行操作过程中应该禁止该按键的响应 否则会引起异常
     sender.userInteractionEnabled = NO;
     ZFFileModel *downFile = self.fileInfo;
@@ -65,8 +64,7 @@
     sender.userInteractionEnabled = YES;
 }
 
-- (void)setFileInfo:(ZFFileModel *)fileInfo
-{
+- (void)setFileInfo:(ZFFileModel *)fileInfo {
     _fileInfo = fileInfo;
     self.fileNameLabel.text = fileInfo.fileName;
     // 服务器可能响应的慢，拿不到视频总长度 && 不是下载状态
@@ -90,9 +88,14 @@
     
     self.progress.progress = progress;
     
-    NSString *spped = [NSString stringWithFormat:@"%@/S",[ZFCommonHelper getFileSizeString:[NSString stringWithFormat:@"%lu",[ASIHTTPRequest averageBandwidthUsedPerSecond]]]];
-    self.speedLabel.text = spped;
-    
+    // NSString *spped = [NSString stringWithFormat:@"%@/S",[ZFCommonHelper getFileSizeString:[NSString stringWithFormat:@"%lu",[ASIHTTPRequest averageBandwidthUsedPerSecond]]]];
+    if (fileInfo.speed) {
+        NSString *speed = [NSString stringWithFormat:@"%@ 剩余%@",fileInfo.speed,fileInfo.remainingTime];
+        self.speedLabel.text = speed;
+    } else {
+        self.speedLabel.text = @"正在获取";
+    }
+
     if (fileInfo.downloadState == ZFDownloading) { //文件正在下载
         self.downloadBtn.selected = NO;
     } else if (fileInfo.downloadState == ZFStopDownload&&!fileInfo.error) {
